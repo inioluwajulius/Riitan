@@ -16,7 +16,10 @@ export function SignatureSection({ onSelectForm }: SignatureSectionProps) {
   const [selectedFinish, setSelectedFinish] = useState<FinishOption>("yellow");
 
   return (
-    <section id="signature" className="py-20 sm:py-28 px-4 sm:px-8 md:px-12 lg:px-16 bg-[#F5EFE6] text-[#0D2218] relative overflow-hidden">
+    <section
+      id="signature"
+      className="scroll-mt-24 py-20 sm:py-28 px-4 sm:px-8 md:px-12 lg:px-16 bg-[#F5EFE6] text-[#0D2218] relative overflow-hidden"
+    >
       {/* Editorial Section Header */}
       <div className="max-w-7xl mx-auto mb-12 sm:mb-16 md:mb-20">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#0D2218]/15 pb-6 sm:pb-8">
@@ -80,7 +83,6 @@ export function SignatureSection({ onSelectForm }: SignatureSectionProps) {
       {/* 3 Iconic Silhouette Cards */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         {SIGNATURE_SILHOUETTES.map((item, index) => {
-          const isHovered = hoveredIndex === index;
           return (
             <div
               key={item.number}
@@ -120,7 +122,7 @@ export function SignatureSection({ onSelectForm }: SignatureSectionProps) {
               </div>
 
               {/* Card Body */}
-              <div className="space-y-3.5 sm:space-y-4 pt-4 border-t border-[#0D2218]/10 relative z-10">
+              <div className="space-y-4 pt-4 border-t border-[#0D2218]/10 relative z-10">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#0D2218] group-hover:text-[#8E6D30] transition-colors">
@@ -139,10 +141,15 @@ export function SignatureSection({ onSelectForm }: SignatureSectionProps) {
                   {item.description}
                 </p>
 
+                {/* Poetic Philosophy Note */}
+                <p className="italic font-serif text-xs text-[#8E6D30]/90">
+                  &ldquo;{item.philosophy}&rdquo;
+                </p>
+
                 {/* Technical Casting Bar */}
                 <div className="pt-2 flex items-center justify-between text-[10px] sm:text-[11px] font-sans tracking-wider border-t border-[#0D2218]/5">
-                  <span className="italic font-serif text-xs text-[#0D2218]/70 truncate max-w-[55%]">
-                    &ldquo;{item.philosophy}&rdquo;
+                  <span className="text-[9.5px] sm:text-[10px] font-sans text-[#0D2218]/50 uppercase tracking-widest">
+                    Numbered Editions 1–50
                   </span>
                   <span className="text-[9.5px] sm:text-[10px] font-sans font-semibold tracking-widest text-[#8E6D30] uppercase whitespace-nowrap">
                     Explore Collection →

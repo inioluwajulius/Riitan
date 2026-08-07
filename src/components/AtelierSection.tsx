@@ -33,7 +33,10 @@ export function AtelierSection() {
   ];
 
   return (
-    <section id="atelier" className="py-20 sm:py-28 px-4 sm:px-8 md:px-12 lg:px-16 bg-[#F5EFE6] text-[#0D2218] relative border-b border-[#0D2218]/15">
+    <section
+      id="atelier"
+      className="scroll-mt-24 py-20 sm:py-28 px-4 sm:px-8 md:px-12 lg:px-16 bg-[#F5EFE6] text-[#0D2218] relative border-b border-[#0D2218]/15"
+    >
       <div className="max-w-7xl mx-auto space-y-16 sm:space-y-20">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#0D2218]/15 pb-6 sm:pb-8">

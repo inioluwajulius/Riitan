@@ -10,7 +10,10 @@ interface ServicesSectionProps {
 
 export function ServicesSection({ onBookService }: ServicesSectionProps) {
   return (
-    <section id="services" className="py-20 sm:py-28 px-4 sm:px-8 md:px-12 lg:px-16 bg-[#0D2218] text-[#FAF7F2] relative border-b border-[#C9A86A]/20">
+    <section
+      id="services"
+      className="scroll-mt-24 py-20 sm:py-28 px-4 sm:px-8 md:px-12 lg:px-16 bg-[#0D2218] text-[#FAF7F2] relative border-b border-[#C9A86A]/20"
+    >
       <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#C9A86A]/20 pb-6 sm:pb-8">
