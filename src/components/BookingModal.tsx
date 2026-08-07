@@ -7,24 +7,42 @@ import { X, Sparkles, Check, Clock, MapPin, Calendar, User, Mail, Phone, Message
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialServiceId?: string;
+  initialPieceName?: string;
   preselectedServiceId?: string;
 }
 
 export function BookingModal({
   isOpen,
   onClose,
+  initialServiceId,
+  initialPieceName,
   preselectedServiceId,
 }: BookingModalProps) {
   const [selectedService, setSelectedService] = useState(
-    preselectedServiceId || "private-salon"
+    initialServiceId || preselectedServiceId || "private-salon"
   );
   const [location, setLocation] = useState<"lagos" | "london" | "virtual">("lagos");
   const [date, setDate] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [notes, setNotes] = useState("");
+  const [notes, setNotes] = useState(
+    initialPieceName ? `Inquiring regarding: ${initialPieceName}` : ""
+  );
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      if (initialServiceId || preselectedServiceId) {
+        setSelectedService(initialServiceId || preselectedServiceId || "private-salon");
+      }
+      if (initialPieceName) {
+        setNotes(`Inquiring regarding: ${initialPieceName}`);
+      }
+      setIsSubmitted(false);
+    }
+  }, [isOpen, initialServiceId, initialPieceName, preselectedServiceId]);
 
   if (!isOpen) return null;
 

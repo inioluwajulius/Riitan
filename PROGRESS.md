@@ -6,7 +6,7 @@
 
 ---
 
-## 📖 1. How This Project Started
+## 📖 1. Project Genesis & Brand Foundations
 
 ### 1.1 The Brand Vision & Heritage
 The project originated from the creative briefs and Scope of Work (SOW):
@@ -16,10 +16,10 @@ The project originated from the creative briefs and Scope of Work (SOW):
 - **Design Prototype Analysis**: A video walkthrough (`riitan-prototype-demo.mov`) demonstrating the dark emerald backdrop, gold gradients, interactive 3D-feel motifs, chapter tabs, and editorial typography.
 
 ### 1.2 Core Brand Pillars
-- **Adornment as a Visual Language**: Moving beyond literal emblems into pure abstract sculptural forms.
+- **Adornment as a Visual Language**: Moving beyond literal symbols into pure abstract sculptural forms.
 - **Quiet Luxury & Permanence**: 18k solid recycled gold with substantial weight and zero mining waste.
-- **Dual Atelier Presence**: Bridging ancestral lost-wax metallurgy in Lagos with high-precision fine jewelry finishing in London.
-- **Made to Order**: Bespoke one-of-a-kind commissions and private salon appointments.
+- **Dual Atelier Presence**: Bridging ancestral lost-wax metallurgy in Lagos with high-precision fine jewelry engineering in London.
+- **Made to Order**: Bespoke one-of-a-kind commissions, numbered casting editions (1–50), and private salon appointments.
 
 ---
 
@@ -29,7 +29,7 @@ The project originated from the creative briefs and Scope of Work (SOW):
 - **Deep Heritage Emerald / Forest**: `#0D2218`, `#11271D`, `#163326`, `#081710`
 - **Warm Champagne / Oat Silk**: `#F5EFE6`, `#EDE6D8`, `#FAF7F2`, `#E8DFC8`
 - **Lustrous 18k Solid Gold Gradients**:
-  - *Light Gold*: `#FFF1C5` / `#EBD49B`
+  - *Light Gold Highlight*: `#FFF1C5` / `#EBD49B`
   - *Base Gold*: `#C9A86A`
   - *Rich Gold*: `#B8924B`
   - *Deep Antique Gold*: `#8E6D30`
@@ -47,13 +47,14 @@ The project originated from the creative briefs and Scope of Work (SOW):
 - **Language**: TypeScript 5 (Strict typing across data models and components)
 - **Styling**: Tailwind CSS v4 + Vanilla CSS Custom Design Tokens & Keyframe Animations
 - **Icons & Graphics**: Lucide React + Bespoke Precision SVG Gold Vector Motifs + HTML5 Ambient Gold Canvas
+- **Experience Model**: Single-page fluid storytelling architecture with smooth anchor routing and modal overlays.
 
 ---
 
 ## 💎 4. Built Components & Feature Modules
 
 ### 4.1 Ambient Gold Canvas (`src/components/GoldCanvas.tsx`)
-- Shimmering particulate simulation with floating gold dust and undulating bezier silk waves.
+- Shimmering particulate simulation with floating gold dust and undulating bezier silk waves on the dark emerald canvas.
 
 ### 4.2 Precision Gold Motifs (`src/components/GoldMotifs.tsx`)
 - Scalable SVG jewelry visualizer with interactive lighting and alloy switching:
@@ -62,16 +63,23 @@ The project originated from the creative briefs and Scope of Work (SOW):
   - `double-flow`: Sinuous twin parallel ribbons moving in unison.
   - `talisman`: Indented shield with ancestral Yoruba sunburst relief.
   - `torque`: Architectural ergonomic collar.
+  - `master-emblem`: High-carat sculptural central emblem.
 
 ### 4.3 Concierge Header (`src/components/Header.tsx`)
-- Frosted glassmorphism header with wide-tracked `R Í Ì T À N` wordmark.
+- Frosted glassmorphism header with wide-tracked `R Í Ì T À N` wordmark and brand insignia.
 - **Live Multi-Currency Engine**: Real-time conversion across `USD ($)`, `GBP (£)`, `EUR (€)`, and `NGN (₦)`.
-- Responsive navigation links and 1-click Private Salon drawer trigger.
+- **Responsive Mobile Drawer**: Opaque luxury drawer with backdrop blur, currency selectors, and quick Private Salon booking triggers.
 
-### 4.4 Interactive Hero Section (`src/components/HeroSection.tsx`)
-- Poetic statement: *"The shape of a woman, rendered in gold."*
-- Interactive 360 sculpture visualizer with live alloy toggles (*18k Yellow Gold*, *Rose Gold*, *White Gold*).
-- Four foundational hallmark badges (*18k Solid Gold*, *Dual Atelier*, *Made to Order*, *Bespoke Salon*).
+### 4.4 Editorial & Interactive Hero Section (`src/components/HeroSection.tsx`)
+- **Default View**: Defaults to the **Editorial Muse on Skin** on all devices.
+- **Mobile Experience (Blended Background)**:
+  - High-impact visual immersion above the fold with the editorial muse wearing the solid 18k gold necklace and earrings seamlessly blended into the background.
+  - Multi-stage directional gradients (`from-[#0D2218] via-[#0D2218]/80 to-[#0D2218]/60`) ensuring high-contrast readability.
+  - **Option 1 Floating Bottom-Right Thumb Dock (`[ ✦ MUSE | ✦ SCULPTURE ]`)**: Positioned in the mobile thumb zone for one-handed switching between the editorial portrait and the 3D golden emblem.
+- **Desktop Experience (3D Parallax Showcase)**:
+  - Balanced 2-column layout with generous vertical headroom (`pt-28 lg:pt-36`) to prevent clipping beneath the fixed navbar.
+  - Interactive 3D parallax tilt on hover with dynamic specular glint light reflections.
+  - Slim atelier pedigree assurance line and animated *"Scroll to Discover"* cue.
 
 ### 4.5 Signature Silhouettes (`src/components/SignatureSection.tsx`)
 - In-depth showcase of the 3 iconic forms:
@@ -80,8 +88,8 @@ The project originated from the creative briefs and Scope of Work (SOW):
   3. `03 The Double Flow` (Movement Made Wearable)
 
 ### 4.6 Product Spotlight — Piece No. 01 (`src/components/SpotlightSection.tsx`)
-- Focus on **The Split Loop Earring** (`$1,480 USD` / dynamic currency).
-- Alloy selector, specifications matrix (*9.4g solid pair, 18k recycled gold, made to order 3-4 weeks*), and direct commission enquiry action.
+- Focus on **The Split Loop Earring** (`$1,480 USD` / dynamic multi-currency).
+- Alloy selector (*18k Yellow Gold*, *Rose Gold*, *White Gold*), specifications matrix (*9.4g solid pair, 18k recycled gold, made to order 3-4 weeks*), and direct commission enquiry action.
 
 ### 4.7 Collections & Four Chapters (`src/components/CollectionsSection.tsx`)
 - Chapter organization:
@@ -121,56 +129,59 @@ The project originated from the creative briefs and Scope of Work (SOW):
 
 ---
 
-## 🧹 5. Cleaned & Standardized File Structure
+## 📱 5. Responsive Architecture & UX Optimization
 
-### Renamed Assets in `public/`:
-- `public/logo-riitan.png` *(Renamed from `logo final ritan.png`)*
-- `public/wordmark-riitan.png` *(Renamed from `word mark final ritan.png`)*
-- `public/brand-lookbook-hero.jpg` *(Renamed from `PHOTO-2026-08-05-13-07-26.jpg`)*
-- `public/riitan-prototype-demo.mov` *(Renamed from `Screen Recording 2026-06-03 at 4.35.15 PM.mov`)*
-- Removed redundant boilerplate SVGs (`file.svg`, `globe.svg`, `window.svg`).
+| Viewport | Screen Width | Key UX Features |
+| :--- | :--- | :--- |
+| **Mobile** | `375px – 640px` | Blended hero backdrop, floating bottom thumb dock (`[ ✦ MUSE \| ✦ SCULPTURE ]`), opaque luxury navigation drawer, full-width touch-friendly CTAs (`min-h-[48px]`). |
+| **Tablet** | `768px – 1024px` | Fluid 2-column grids, balanced typography scaling, integrated currency selector, touch-optimized product cards. |
+| **Desktop** | `1200px – 1920px+` | Sticky glassmorphic header, 3D parallax tilt showcase with light glint reflections, animated gold canvas particles, smooth section anchor alignment (`scroll-mt-24`). |
 
-### Source Code Hierarchy:
+---
+
+## 🧹 6. File Structure & Assets
+
 ```
 riitan/
 ├── public/
-│   ├── brand-lookbook-hero.jpg
-│   ├── logo-riitan.png
-│   ├── wordmark-riitan.png
-│   ├── riitan-prototype-demo.mov
+│   ├── brand-lookbook-hero.jpg      # Campaign editorial photograph
+│   ├── riitan-muse-hero.jpg         # High-fashion muse wearing 18k solid gold jewellery
+│   ├── logo-riitan.png              # High-resolution emblem logo
+│   ├── wordmark-riitan.png          # High-resolution wordmark
+│   ├── riitan-prototype-demo.mov    # Original brand prototype video
 │   └── favicon.ico
 ├── src/
 │   ├── app/
-│   │   ├── globals.css          # Design system tokens, gold gradients, animations
-│   │   ├── layout.tsx           # Typography & SEO metadata
-│   │   └── page.tsx             # Master application assembly & state management
+│   │   ├── globals.css              # Design system tokens, gold gradients, animations
+│   │   ├── layout.tsx               # Typography & SEO metadata
+│   │   └── page.tsx                 # Master single-page assembly & state coordination
 │   ├── components/
-│   │   ├── AtelierSection.tsx   # Craftsmanship & 4-stage casting journey
-│   │   ├── BookingModal.tsx     # Multi-step bespoke consultation drawer
-│   │   ├── CollectionsSection.tsx # Four Chapters catalog with category filtering
-│   │   ├── FooterSection.tsx    # Salon dispatch & live Lagos/London clocks
-│   │   ├── GoldCanvas.tsx       # Shimmering ambient canvas background
-│   │   ├── GoldMotifs.tsx       # Vector gold jewelry motif engine
-│   │   ├── Header.tsx           # Navigation & real-time multi-currency switcher
-│   │   ├── HeroSection.tsx      # 360 sculpture visualizer & alloy selector
-│   │   ├── LookbookSection.tsx  # Editorial gallery & interactive lightbox
-│   │   ├── ProductModal.tsx     # Detailed piece quick-view & customizer
-│   │   ├── ServicesSection.tsx  # The four bespoke house services
-│   │   ├── SignatureSection.tsx # The three iconic silhouettes
-│   │   └── SpotlightSection.tsx # Foundational Piece No. 01 showcase
+│   │   ├── AtelierSection.tsx       # Craftsmanship & 4-stage casting journey
+│   │   ├── BookingModal.tsx         # Multi-step bespoke consultation drawer
+│   │   ├── CollectionsSection.tsx   # Four Chapters catalog with category filtering
+│   │   ├── FooterSection.tsx        # Salon dispatch & live Lagos/London clocks
+│   │   ├── GoldCanvas.tsx           # Shimmering ambient canvas background
+│   │   ├── GoldMotifs.tsx           # Vector gold jewelry motif engine
+│   │   ├── Header.tsx               # Navigation & real-time multi-currency switcher
+│   │   ├── HeroSection.tsx          # Blended mobile hero, 3D parallax & view switcher
+│   │   ├── LookbookSection.tsx      # Editorial gallery & interactive lightbox
+│   │   ├── ProductModal.tsx         # Detailed piece quick-view & customizer
+│   │   ├── ServicesSection.tsx      # The four bespoke house services
+│   │   ├── SignatureSection.tsx     # The three iconic silhouettes
+│   │   └── SpotlightSection.tsx     # Foundational Piece No. 01 showcase
 │   └── data/
-│       └── riitanData.ts        # Comprehensive data models, prices, chapters & lookbook
-├── PROGRESS.md                  # Comprehensive journey & technical documentation
+│       └── riitanData.ts            # Data models, prices, chapters, services & lookbook
+├── PROGRESS.md                      # Comprehensive journey & technical documentation
 ├── package.json
 └── tsconfig.json
 ```
 
 ---
 
-## ✅ 6. Verification & Quality Validation
+## ✅ 7. Verification & Quality Validation
 
 - **Build Check**: `npx next build`
 - **Compilation Status**: `✓ Compiled successfully`
 - **TypeScript**: 0 errors
 - **Linter**: 0 warnings
-- **Production Bundle**: Prerendered static pages generated cleanly.
+- **Multi-Device Testing**: Live browser verified on Mobile (iPhone 375×812), Tablet (iPad 768×1024), and Desktop (1440×900).
