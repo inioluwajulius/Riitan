@@ -12,25 +12,25 @@ export function LookbookSection({ onOpenBooking }: LookbookSectionProps) {
   const [activeItem, setActiveItem] = useState<LookbookItem | null>(null);
 
   return (
-    <section id="lookbook" className="py-28 px-6 md:px-12 bg-[#0D2218] text-[#FAF7F2] relative border-b border-[#C9A86A]/20">
-      <div className="max-w-7xl mx-auto space-y-16">
+    <section id="lookbook" className="py-20 sm:py-28 px-4 sm:px-8 md:px-12 lg:px-16 bg-[#0D2218] text-[#FAF7F2] relative border-b border-[#C9A86A]/20">
+      <div className="max-w-7xl mx-auto space-y-12 sm:space-y-16">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#C9A86A]/20 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#C9A86A]/20 pb-6 sm:pb-8">
           <div className="space-y-3">
-            <span className="text-[11px] font-sans font-semibold tracking-[0.35em] text-[#C9A86A] uppercase">
+            <span className="text-[10px] sm:text-[11px] font-sans font-semibold tracking-[0.3em] sm:tracking-[0.35em] text-[#C9A86A] uppercase">
               THE LOOKBOOK · EDITORIAL ARCHIVE
             </span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-light text-[#FAF7F2] tracking-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-light text-[#FAF7F2] tracking-tight">
               An experience, <span className="italic font-normal text-gold-gradient">not a catalogue.</span>
             </h2>
           </div>
-          <p className="max-w-md text-sm md:text-base font-sans font-light text-[#FAF7F2]/75 leading-relaxed">
+          <p className="max-w-md text-xs sm:text-sm md:text-base font-sans font-light text-[#FAF7F2]/75 leading-relaxed">
             Visual storytelling over product listing — texture, movement and emotion. Light on melanin, gold against stone, the quiet breath before motion.
           </p>
         </div>
 
         {/* Editorial Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {LOOKBOOK_EDITORIAL.map((item, index) => (
             <div
               key={item.id}
@@ -40,7 +40,7 @@ export function LookbookSection({ onOpenBooking }: LookbookSectionProps) {
               }`}
             >
               {/* Photo Container */}
-              <div className="relative w-full h-80 md:h-full min-h-[380px] overflow-hidden">
+              <div className="relative w-full h-80 md:h-full min-h-[340px] sm:min-h-[380px] overflow-hidden">
                 <img
                   src={item.imageUrl}
                   alt={item.title}
@@ -49,7 +49,7 @@ export function LookbookSection({ onOpenBooking }: LookbookSectionProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#081710] via-[#081710]/40 to-transparent opacity-85 group-hover:opacity-60 transition-opacity" />
 
                 {/* Top Location Pill */}
-                <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#081710]/70 backdrop-blur-md border border-[#C9A86A]/30 text-[10px] font-sans tracking-widest text-[#EBD49B] uppercase">
+                <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#081710]/70 backdrop-blur-md border border-[#C9A86A]/30 text-[9.5px] sm:text-[10px] font-sans tracking-widest text-[#EBD49B] uppercase">
                   <MapPin className="w-3 h-3 text-[#C9A86A]" />
                   <span>{item.location}</span>
                 </div>
@@ -60,8 +60,8 @@ export function LookbookSection({ onOpenBooking }: LookbookSectionProps) {
                 </div>
 
                 {/* Bottom Story Info */}
-                <div className="absolute bottom-0 inset-x-0 p-6 space-y-2">
-                  <h3 className="text-2xl font-serif text-[#FAF7F2] group-hover:text-[#EBD49B] transition-colors">
+                <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 space-y-2">
+                  <h3 className="text-xl sm:text-2xl font-serif text-[#FAF7F2] group-hover:text-[#EBD49B] transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs font-sans font-light text-[#FAF7F2]/75 line-clamp-2">
@@ -71,7 +71,7 @@ export function LookbookSection({ onOpenBooking }: LookbookSectionProps) {
                     {item.styledPieces.map((piece) => (
                       <span
                         key={piece}
-                        className="px-2.5 py-0.5 rounded-md bg-[#C9A86A]/15 border border-[#C9A86A]/30 text-[10px] font-sans tracking-wider text-[#EBD49B]"
+                        className="px-2.5 py-0.5 rounded-md bg-[#C9A86A]/15 border border-[#C9A86A]/30 text-[9.5px] sm:text-[10px] font-sans tracking-wider text-[#EBD49B]"
                       >
                         {piece}
                       </span>
@@ -86,8 +86,8 @@ export function LookbookSection({ onOpenBooking }: LookbookSectionProps) {
 
       {/* Lightbox Modal */}
       {activeItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-[#081710]/95 backdrop-blur-2xl">
-          <div className="relative w-full max-w-4xl rounded-3xl bg-[#0D2218] border border-[#C9A86A]/40 shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 bg-[#081710]/95 backdrop-blur-2xl overflow-y-auto">
+          <div className="relative w-full max-w-4xl rounded-3xl bg-[#0D2218] border border-[#C9A86A]/40 shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 my-auto max-h-[92vh] overflow-y-auto">
             {/* Close Button */}
             <button
               onClick={() => setActiveItem(null)}
@@ -97,7 +97,7 @@ export function LookbookSection({ onOpenBooking }: LookbookSectionProps) {
             </button>
 
             {/* Lightbox Image */}
-            <div className="md:col-span-7 h-72 md:h-[520px] relative">
+            <div className="md:col-span-7 h-64 sm:h-80 md:h-[520px] relative">
               <img
                 src={activeItem.imageUrl}
                 alt={activeItem.title}
@@ -106,21 +106,21 @@ export function LookbookSection({ onOpenBooking }: LookbookSectionProps) {
             </div>
 
             {/* Lightbox Details */}
-            <div className="md:col-span-5 p-8 flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
+            <div className="md:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+              <div className="space-y-3.5 sm:space-y-4">
                 <div className="inline-flex items-center gap-1.5 text-xs font-sans tracking-widest text-[#C9A86A] uppercase">
                   <MapPin className="w-3.5 h-3.5" />
                   <span>{activeItem.location}</span>
                 </div>
-                <h3 className="text-3xl font-serif text-[#FAF7F2]">
+                <h3 className="text-2xl sm:text-3xl font-serif text-[#FAF7F2]">
                   {activeItem.title}
                 </h3>
-                <p className="text-sm font-sans font-light text-[#FAF7F2]/80 leading-relaxed">
+                <p className="text-xs sm:text-sm font-sans font-light text-[#FAF7F2]/80 leading-relaxed">
                   {activeItem.caption}
                 </p>
 
-                <div className="pt-4 border-t border-[#C9A86A]/20">
-                  <span className="text-[11px] font-sans tracking-widest text-[#FAF7F2]/50 uppercase block mb-2">
+                <div className="pt-3 sm:pt-4 border-t border-[#C9A86A]/20">
+                  <span className="text-[10px] sm:text-[11px] font-sans tracking-widest text-[#FAF7F2]/50 uppercase block mb-2">
                     Styled In This Look:
                   </span>
                   <div className="flex flex-col space-y-1.5">

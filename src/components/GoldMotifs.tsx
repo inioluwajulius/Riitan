@@ -3,7 +3,7 @@
 import React, { useId } from "react";
 
 interface MotifProps {
-  type: "split-loop" | "soft-triangle" | "double-flow" | "talisman" | "torque" | string;
+  type: "master-emblem" | "emblem" | "split-loop" | "soft-triangle" | "double-flow" | "talisman" | "torque" | string;
   className?: string;
   interactive?: boolean;
   finish?: "yellow" | "rose" | "white" | string;
@@ -47,6 +47,50 @@ export function GoldMotif({
   const filterId = `gold-shadow-${type}-${reactId}`;
 
   switch (type) {
+    case "master-emblem":
+    case "emblem": {
+      const emblemImg =
+        finish === "white" ? "/logo-riitan-white.png" : "/logo-riitan-gold.png";
+      const emblemFilter =
+        finish === "rose"
+          ? "sepia(0.5) saturate(1.8) hue-rotate(-25deg) drop-shadow(0 15px 35px rgba(234,168,150,0.35))"
+          : finish === "white"
+          ? "brightness(1.1) drop-shadow(0 15px 35px rgba(255,255,255,0.35))"
+          : "drop-shadow(0 15px 35px rgba(201,168,106,0.45))";
+
+      return (
+        <div
+          className={`relative flex items-center justify-center transition-all duration-700 ${
+            interactive ? "group hover:scale-105 cursor-pointer" : ""
+          } ${className}`}
+          style={{ width: size, height: size }}
+        >
+          {/* Ambient Gold Glow Halo */}
+          <div
+            className="absolute inset-0 rounded-full blur-2xl opacity-40 transition-all duration-500 pointer-events-none"
+            style={{
+              background:
+                finish === "rose"
+                  ? "radial-gradient(circle, #C98270 0%, transparent 70%)"
+                  : finish === "white"
+                  ? "radial-gradient(circle, #FFFFFF 0%, transparent 70%)"
+                  : "radial-gradient(circle, #C9A86A 0%, transparent 70%)",
+            }}
+          />
+
+          <img
+            src={emblemImg}
+            alt="RÍÌTÀN Master Emblem"
+            className="w-full h-full object-contain relative z-10 transition-all duration-500 group-hover:rotate-3"
+            style={{ filter: emblemFilter }}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "/logo-riitan.png";
+            }}
+          />
+        </div>
+      );
+    }
+
     case "split-loop":
       return (
         <div
@@ -76,7 +120,6 @@ export function GoldMotif({
             <circle cx="100" cy="100" r="70" fill="none" stroke={gradientStops.mid} strokeWidth="1" opacity="0.15" />
 
             {/* Main Sculptural Split Loop Form */}
-            {/* An open torus loop that leaves an intentional 35-degree gap at top right */}
             <path
               d="M 128,48 
                  A 70,70 0 1,0 160,82 
