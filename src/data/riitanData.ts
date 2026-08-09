@@ -42,6 +42,7 @@ export interface HouseService {
   duration: string;
   location: string;
   availableOptions: string[];
+  imageUrl?: string;
 }
 
 export interface LookbookItem {
@@ -333,6 +334,7 @@ export const HOUSE_SERVICES: HouseService[] = [
     duration: '45 Minutes',
     location: 'Lagos Suite · London Salon · Virtual Video',
     availableOptions: ['Ear Stack Architecture', 'Collar & Neckline Layering', 'Wardrobe Harmony Review'],
+    imageUrl: '/service-personal-styling.png',
   },
   {
     number: '02',
@@ -343,6 +345,7 @@ export const HOUSE_SERVICES: HouseService[] = [
     duration: '60 Minutes',
     location: 'Private VIP Salon or In-Residence',
     availableOptions: ['Gold Karat & Alloy Selection', 'Ergonomic Fitting', 'Investment & Collection Strategy'],
+    imageUrl: '/service-private-salon.png',
   },
   {
     number: '03',
@@ -353,6 +356,7 @@ export const HOUSE_SERVICES: HouseService[] = [
     duration: 'Multi-stage engagement',
     location: 'Direct Goldsmith Collaboration',
     availableOptions: ['Custom Lost-Wax Carving', 'Ethical Diamond & Gem Sourcing', 'Heirloom Gold Recycling'],
+    imageUrl: '/service-custom-bespoke.png',
   },
   {
     number: '04',
@@ -363,6 +367,7 @@ export const HOUSE_SERVICES: HouseService[] = [
     duration: '3–7 Days Engagement',
     location: 'White-glove courier delivery worldwide',
     availableOptions: ['High-Jewelry Collars', 'Archive Statement Cuffs', 'Editorial Press Loans'],
+    imageUrl: '/service-rental-edit.png',
   },
 ];
 
@@ -385,7 +390,7 @@ export const LOOKBOOK_EDITORIAL: LookbookItem[] = [
     styledPieces: ['The Soft Triangle Pendant'],
     aspect: 'landscape',
     goldAccent: '#E4C988',
-    imageUrl: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/lookbook-stone-pendant.png',
   },
   {
     id: 'editorial-3',
@@ -395,7 +400,7 @@ export const LOOKBOOK_EDITORIAL: LookbookItem[] = [
     styledPieces: ['The Double Flow Torque Bangle', 'The Tide Cascade Drops'],
     aspect: 'portrait',
     goldAccent: '#C9A86A',
-    imageUrl: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/lookbook-tide-cuff.png',
   },
   {
     id: 'editorial-4',
@@ -405,7 +410,7 @@ export const LOOKBOOK_EDITORIAL: LookbookItem[] = [
     styledPieces: ['The Lineage Talisman Signet', 'The Royal Amulet'],
     aspect: 'square',
     goldAccent: '#B8924B',
-    imageUrl: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/lookbook-talisman-ring.png',
   },
   {
     id: 'editorial-5',
@@ -415,7 +420,7 @@ export const LOOKBOOK_EDITORIAL: LookbookItem[] = [
     styledPieces: ['The Presence Sculptural Collar'],
     aspect: 'portrait',
     goldAccent: '#F3E0B5',
-    imageUrl: 'https://images.unsplash.com/photo-1611591475152-4732a1d309c6?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/lookbook-presence-collar.png',
   },
   {
     id: 'editorial-6',
@@ -425,7 +430,7 @@ export const LOOKBOOK_EDITORIAL: LookbookItem[] = [
     styledPieces: ['All Four Chapters in Development'],
     aspect: 'landscape',
     goldAccent: '#DFC07C',
-    imageUrl: 'https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=1200&auto=format&fit=crop',
+    imageUrl: '/lookbook-lostwax-workshop.png',
   },
 ];
 

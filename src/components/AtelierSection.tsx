@@ -11,24 +11,28 @@ export function AtelierSection() {
       icon: Layers,
       title: "Wax Sculpture",
       desc: "Each silhouette begins as a block of organic wax, carved by hand to achieve gentle ergonomic curvature.",
+      image: "/atelier-stage1-wax.png",
     },
     {
       num: "02",
       icon: Flame,
       title: "Lost-Wax Burnout",
       desc: "An ancient technique practiced across Yoruba royal courts for centuries, creating a hollow negative mold.",
+      image: "/atelier-stage2-burnout.png",
     },
     {
       num: "03",
       icon: Sparkles,
       title: "18k Solid Gold Cast",
       desc: "Molten 750‰ solid recycled gold is centrifugally cast into the mold, solidifying in seconds.",
+      image: "/atelier-stage3-cast.png",
     },
     {
       num: "04",
       icon: Award,
       title: "Hand Luster & Hallmark",
       desc: "Over 14 hours of hand-filing, satin texturing, mirror buffing, and official assay hallmarking.",
+      image: "/atelier-stage4-hallmark.png",
     },
   ];
 
@@ -97,19 +101,34 @@ export function AtelierSection() {
               {steps.map((s) => {
                 const IconComponent = s.icon;
                 return (
-                  <div key={s.num} className="space-y-2.5 sm:space-y-3 relative">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-serif text-[#C9A86A]">
+                  <div
+                    key={s.num}
+                    className="group flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#081710]/80 border border-[#C9A86A]/20 hover:border-[#C9A86A]/60 transition-all duration-500 hover:shadow-xl space-y-4"
+                  >
+                    {/* Stage Thumbnail Photo */}
+                    <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-[#C9A86A]/15 bg-[#081710]">
+                      <img
+                        src={s.image}
+                        alt={s.title}
+                        className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 filter brightness-[0.9] contrast-[1.05]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#081710]/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+                      <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-[#081710]/80 backdrop-blur-sm border border-[#C9A86A]/30 text-[9px] font-serif text-[#C9A86A]">
                         STAGE {s.num}
-                      </span>
-                      <IconComponent className="w-4 h-4 text-[#C9A86A]/70" />
+                      </div>
+                      <div className="absolute top-2.5 right-2.5 p-1 rounded-md bg-[#081710]/80 backdrop-blur-sm border border-[#C9A86A]/30 text-[#C9A86A]">
+                        <IconComponent className="w-3 h-3 text-[#C9A86A]" />
+                      </div>
                     </div>
-                    <h4 className="text-base sm:text-lg font-serif text-[#FAF7F2]">
-                      {s.title}
-                    </h4>
-                    <p className="text-xs font-sans font-light text-[#FAF7F2]/70 leading-relaxed">
-                      {s.desc}
-                    </p>
+
+                    <div className="space-y-1.5 flex-1 flex flex-col justify-between">
+                      <h4 className="text-base sm:text-lg font-serif text-[#FAF7F2] group-hover:text-[#EBD49B] transition-colors">
+                        {s.title}
+                      </h4>
+                      <p className="text-xs font-sans font-light text-[#FAF7F2]/70 leading-relaxed">
+                        {s.desc}
+                      </p>
+                    </div>
                   </div>
                 );
               })}

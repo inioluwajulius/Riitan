@@ -35,15 +35,28 @@ export function ServicesSection({ onBookService }: ServicesSectionProps) {
           {HOUSE_SERVICES.map((service) => (
             <div
               key={service.id}
-              className="group flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-3xl bg-[#081710]/80 border border-[#C9A86A]/25 hover:border-[#C9A86A] transition-all duration-500 hover:shadow-2xl backdrop-blur-md"
+              className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-3xl bg-[#081710]/90 border border-[#C9A86A]/25 hover:border-[#C9A86A] transition-all duration-500 hover:shadow-2xl overflow-hidden"
             >
-              <div className="space-y-5 sm:space-y-6">
+              {/* Atmospheric Background Image with Luxury Emerald Gradient */}
+              {service.imageUrl && (
+                <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+                  <img
+                    src={service.imageUrl}
+                    alt={service.title}
+                    className="w-full h-full object-cover object-center opacity-25 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700 filter brightness-[0.75] contrast-[1.1]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#081710] via-[#081710]/85 to-[#081710]/50" />
+                  <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#081710]/50 to-[#081710]" />
+                </div>
+              )}
+
+              <div className="relative z-10 space-y-5 sm:space-y-6">
                 {/* Number & Duration */}
                 <div className="flex items-center justify-between border-b border-[#C9A86A]/15 pb-4">
                   <span className="text-2xl sm:text-3xl font-serif text-[#C9A86A]">
                     {service.number}
                   </span>
-                  <div className="flex items-center gap-1.5 text-xs font-sans text-[#FAF7F2]/60">
+                  <div className="flex items-center gap-1.5 text-xs font-sans text-[#FAF7F2]/75 px-3 py-1 rounded-full bg-[#081710]/70 border border-[#C9A86A]/20 backdrop-blur-sm">
                     <Clock className="w-3.5 h-3.5 text-[#C9A86A]" />
                     <span>{service.duration}</span>
                   </div>
@@ -60,13 +73,13 @@ export function ServicesSection({ onBookService }: ServicesSectionProps) {
                 </div>
 
                 {/* Description */}
-                <p className="text-xs sm:text-sm font-sans font-light text-[#FAF7F2]/75 leading-relaxed">
+                <p className="text-xs sm:text-sm font-sans font-light text-[#FAF7F2]/85 leading-relaxed">
                   {service.description}
                 </p>
 
                 {/* Location & Options */}
                 <div className="space-y-3 pt-2">
-                  <div className="flex items-center gap-2 text-xs font-sans text-[#FAF7F2]/70">
+                  <div className="flex items-center gap-2 text-xs font-sans text-[#FAF7F2]/80">
                     <MapPin className="w-3.5 h-3.5 text-[#C9A86A]" />
                     <span>{service.location}</span>
                   </div>
@@ -75,7 +88,7 @@ export function ServicesSection({ onBookService }: ServicesSectionProps) {
                     {service.availableOptions.map((opt) => (
                       <span
                         key={opt}
-                        className="px-3 py-1 rounded-full bg-[#163326] border border-[#C9A86A]/20 text-[10px] sm:text-[11px] font-sans text-[#EBD49B]"
+                        className="px-3 py-1 rounded-full bg-[#163326]/90 border border-[#C9A86A]/30 text-[10px] sm:text-[11px] font-sans text-[#EBD49B] shadow-sm backdrop-blur-sm"
                       >
                         {opt}
                       </span>
@@ -85,7 +98,7 @@ export function ServicesSection({ onBookService }: ServicesSectionProps) {
               </div>
 
               {/* Action Button */}
-              <div className="pt-6 sm:pt-8 border-t border-[#C9A86A]/15 mt-6 sm:mt-8">
+              <div className="relative z-10 pt-6 sm:pt-8 border-t border-[#C9A86A]/15 mt-6 sm:mt-8">
                 <button
                   onClick={() => onBookService(service)}
                   className="w-full py-3.5 rounded-full bg-gold-metallic text-[#0D2218] text-xs font-sans font-semibold tracking-[0.2em] uppercase hover:shadow-[0_0_20px_rgba(201,168,106,0.5)] transition-all flex items-center justify-center gap-2"
