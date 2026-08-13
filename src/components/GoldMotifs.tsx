@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useId } from "react";
+import { motion } from "framer-motion";
 
 interface MotifProps {
   type: "master-emblem" | "emblem" | "split-loop" | "soft-triangle" | "double-flow" | "talisman" | "torque" | string;
@@ -8,6 +9,7 @@ interface MotifProps {
   interactive?: boolean;
   finish?: "yellow" | "rose" | "white" | string;
   size?: number;
+  lightSource?: { x: number; y: number } | null;
 }
 
 export function GoldMotif({
@@ -16,6 +18,7 @@ export function GoldMotif({
   interactive = false,
   finish = "yellow",
   size = 180,
+  lightSource = null,
 }: MotifProps) {
   // Finish gradient colors
   const gradientStops = {
@@ -45,6 +48,11 @@ export function GoldMotif({
   const reactId = useId().replace(/[^a-zA-Z0-9-_]/g, "");
   const gradId = `gold-grad-${type}-${finish}-${reactId}`;
   const filterId = `gold-shadow-${type}-${reactId}`;
+
+  const gradX1 = lightSource ? `${lightSource.x}%` : "0%";
+  const gradY1 = lightSource ? `${lightSource.y}%` : "0%";
+  const gradX2 = lightSource ? `${100 - lightSource.x}%` : "100%";
+  const gradY2 = lightSource ? `${100 - lightSource.y}%` : "100%";
 
   switch (type) {
     case "master-emblem":
@@ -104,7 +112,7 @@ export function GoldMotif({
             className="w-full h-full drop-shadow-[0_15px_25px_rgba(201,168,106,0.25)] transition-transform duration-700 group-hover:rotate-6"
           >
             <defs>
-              <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id={gradId} x1={gradX1} y1={gradY1} x2={gradX2} y2={gradY2}>
                 <stop offset="0%" stopColor={gradientStops.light} />
                 <stop offset="25%" stopColor={gradientStops.midLight} />
                 <stop offset="55%" stopColor={gradientStops.mid} />
@@ -116,42 +124,48 @@ export function GoldMotif({
               </filter>
             </defs>
 
-            {/* Ambient Back Glow */}
-            <circle cx="100" cy="100" r="70" fill="none" stroke={gradientStops.mid} strokeWidth="1" opacity="0.15" />
-
-            {/* Main Sculptural Split Loop Form */}
-            <path
-              d="M 128,48 
-                 A 70,70 0 1,0 160,82 
-                 C 152,78 140,84 135,92 
-                 A 45,45 0 1,1 112,65 
-                 C 118,55 124,50 128,48 Z"
-              fill={`url(#${gradId})`}
-              filter={`url(#${filterId})`}
-            />
-
-            {/* Inner Refined Lip Specular Highlight */}
-            <path
-              d="M 125,52 A 66,66 0 1,0 156,84"
-              fill="none"
-              stroke="#FFFFFF"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              opacity="0.8"
-            />
-
-            {/* Subtle Carat Hallmark Micro-engraving */}
-            <text
-              x="100"
-              y="105"
-              textAnchor="middle"
-              fill={gradientStops.mid}
-              fontSize="6"
-              letterSpacing="2"
-              className="font-sans font-medium uppercase opacity-60"
+            <motion.g
+              animate={{ rotate: [0, 1.5, -1, 0], scale: [1, 1.005, 0.995, 1] }}
+              transition={{ duration: 12, ease: "easeInOut", repeat: Infinity }}
+              style={{ transformOrigin: "center" }}
             >
-              RÍÌTÀN · 750
-            </text>
+              {/* Ambient Back Glow */}
+              <circle cx="100" cy="100" r="70" fill="none" stroke={gradientStops.mid} strokeWidth="1" opacity="0.15" />
+
+              {/* Main Sculptural Split Loop Form */}
+              <path
+                d="M 128,48 
+                   A 70,70 0 1,0 160,82 
+                   C 152,78 140,84 135,92 
+                   A 45,45 0 1,1 112,65 
+                   C 118,55 124,50 128,48 Z"
+                fill={`url(#${gradId})`}
+                filter={`url(#${filterId})`}
+              />
+
+              {/* Inner Refined Lip Specular Highlight */}
+              <path
+                d="M 125,52 A 66,66 0 1,0 156,84"
+                fill="none"
+                stroke="#FFFFFF"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                opacity="0.8"
+              />
+
+              {/* Subtle Carat Hallmark Micro-engraving */}
+              <text
+                x="100"
+                y="105"
+                textAnchor="middle"
+                fill={gradientStops.mid}
+                fontSize="6"
+                letterSpacing="2"
+                className="font-sans font-medium uppercase opacity-60"
+              >
+                RÍÌTÀN · 750
+              </text>
+            </motion.g>
           </svg>
         </div>
       );
@@ -169,7 +183,7 @@ export function GoldMotif({
             className="w-full h-full drop-shadow-[0_15px_25px_rgba(201,168,106,0.25)] transition-transform duration-700 group-hover:-rotate-6"
           >
             <defs>
-              <linearGradient id={gradId} x1="15%" y1="10%" x2="85%" y2="90%">
+              <linearGradient id={gradId} x1={gradX1} y1={gradY1} x2={gradX2} y2={gradY2}>
                 <stop offset="0%" stopColor={gradientStops.light} />
                 <stop offset="30%" stopColor={gradientStops.midLight} />
                 <stop offset="60%" stopColor={gradientStops.mid} />
@@ -181,35 +195,30 @@ export function GoldMotif({
               </filter>
             </defs>
 
-            {/* Soft Triangle: Rounded Chamfered Geometry */}
-            <path
-              d="M 100,32 
-                 C 108,32 165,135 162,146 
-                 C 158,158 42,158 38,146 
-                 C 35,135 92,32 100,32 Z"
-              fill={`url(#${gradId})`}
-              filter={`url(#${filterId})`}
-            />
+            <motion.g
+              animate={{ rotate: [0, -1, 1, 0], scale: [1, 1.01, 0.99, 1] }}
+              transition={{ duration: 15, ease: "easeInOut", repeat: Infinity }}
+              style={{ transformOrigin: "center" }}
+            >
+              {/* Soft Triangle: Rounded Chamfered Geometry with Hollow Core */}
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M 100,32 C 108,32 165,135 162,146 C 158,158 42,158 38,146 C 35,135 92,32 100,32 Z M 100,68 C 104,68 135,128 132,134 C 128,140 72,140 68,134 C 65,128 96,68 100,68 Z"
+                fill={`url(#${gradId})`}
+                filter={`url(#${filterId})`}
+              />
 
-            {/* Soft Hollow Interior */}
-            <path
-              d="M 100,68 
-                 C 104,68 135,128 132,134 
-                 C 128,140 72,140 68,134 
-                 C 65,128 96,68 100,68 Z"
-              fill="#0D2218"
-              opacity="0.95"
-            />
-
-            {/* Gold specular ridge */}
-            <path
-              d="M 98,38 C 104,38 155,132 153,142"
-              fill="none"
-              stroke="#FFFFFF"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              opacity="0.85"
-            />
+              {/* Gold specular ridge */}
+              <path
+                d="M 98,38 C 104,38 155,132 153,142"
+                fill="none"
+                stroke="#FFFFFF"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                opacity="0.85"
+              />
+            </motion.g>
           </svg>
         </div>
       );
@@ -227,7 +236,7 @@ export function GoldMotif({
             className="w-full h-full drop-shadow-[0_15px_25px_rgba(201,168,106,0.25)] transition-transform duration-700 group-hover:scale-105"
           >
             <defs>
-              <linearGradient id={gradId} x1="0%" y1="20%" x2="100%" y2="80%">
+              <linearGradient id={gradId} x1={gradX1} y1={gradY1} x2={gradX2} y2={gradY2}>
                 <stop offset="0%" stopColor={gradientStops.light} />
                 <stop offset="35%" stopColor={gradientStops.midLight} />
                 <stop offset="70%" stopColor={gradientStops.mid} />
@@ -238,41 +247,59 @@ export function GoldMotif({
               </filter>
             </defs>
 
-            {/* Ribbon 1 - Outer Wave */}
-            <path
-              d="M 40,70 
-                 C 70,30 130,40 160,85 
-                 C 180,115 150,165 110,165 
-                 C 80,165 50,140 60,115 
-                 C 70,90 120,95 135,115"
-              fill="none"
-              stroke={`url(#${gradId})`}
-              strokeWidth="16"
-              strokeLinecap="round"
-              filter={`url(#${filterId})`}
-            />
+            <motion.g
+              animate={{ rotate: [0, 1.5, -1.5, 0] }}
+              transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
+              style={{ transformOrigin: "center" }}
+            >
+              {/* Ribbon 1 - Outer Wave */}
+              <motion.path
+                d="M 40,70 
+                   C 70,30 130,40 160,85 
+                   C 180,115 150,165 110,165 
+                   C 80,165 50,140 60,115 
+                   C 70,90 120,95 135,115"
+                fill="none"
+                stroke={`url(#${gradId})`}
+                strokeWidth="16"
+                strokeLinecap="round"
+                filter={`url(#${filterId})`}
+                animate={{ d: [
+                  "M 40,70 C 70,30 130,40 160,85 C 180,115 150,165 110,165 C 80,165 50,140 60,115 C 70,90 120,95 135,115",
+                  "M 38,72 C 68,32 132,38 158,87 C 182,113 148,167 108,163 C 78,167 52,138 62,113 C 72,88 118,97 137,113",
+                  "M 40,70 C 70,30 130,40 160,85 C 180,115 150,165 110,165 C 80,165 50,140 60,115 C 70,90 120,95 135,115"
+                ] }}
+                transition={{ duration: 10, ease: "easeInOut", repeat: Infinity }}
+              />
 
-            {/* Specular ribbon 1 */}
-            <path
-              d="M 48,68 C 72,36 125,44 152,84"
-              fill="none"
-              stroke="#FFFFFF"
-              strokeWidth="3"
-              strokeLinecap="round"
-              opacity="0.85"
-            />
+              {/* Specular ribbon 1 */}
+              <path
+                d="M 48,68 C 72,36 125,44 152,84"
+                fill="none"
+                stroke="#FFFFFF"
+                strokeWidth="3"
+                strokeLinecap="round"
+                opacity="0.85"
+              />
 
-            {/* Ribbon 2 - Parallel Inner Wave */}
-            <path
-              d="M 50,95 
-                 C 75,65 115,70 135,100 
-                 C 150,122 130,150 100,150 
-                 C 80,150 65,135 72,120"
-              fill="none"
-              stroke={`url(#${gradId})`}
-              strokeWidth="10"
-              strokeLinecap="round"
-            />
+              {/* Ribbon 2 - Parallel Inner Wave */}
+              <motion.path
+                d="M 50,95 
+                   C 75,65 115,70 135,100 
+                   C 150,122 130,150 100,150 
+                   C 80,150 65,135 72,120"
+                fill="none"
+                stroke={`url(#${gradId})`}
+                strokeWidth="10"
+                strokeLinecap="round"
+                animate={{ d: [
+                  "M 50,95 C 75,65 115,70 135,100 C 150,122 130,150 100,150 C 80,150 65,135 72,120",
+                  "M 48,97 C 73,67 117,68 133,102 C 152,120 128,152 98,148 C 78,152 67,133 74,118",
+                  "M 50,95 C 75,65 115,70 135,100 C 150,122 130,150 100,150 C 80,150 65,135 72,120"
+                ] }}
+                transition={{ duration: 10, ease: "easeInOut", repeat: Infinity }}
+              />
+            </motion.g>
           </svg>
         </div>
       );
